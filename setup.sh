@@ -7,7 +7,7 @@ read -p "Enter your selected region: " piaregion
 
 read -p "Enter Pfsense username and password(ex. admin:password): " pfsense_username
 read -p "Enter the name of your wireguard interface(ex. tun_wg1): " wireinf
-read -p "Enter the name of the wire guard peer you setup: " wirepeer
+read -p "Enter the name of the Wireguard peer you setup: " wirepeer
 read -p "Enter the interface id of the interface you created(ex. opt1,opt,opt3): " interfaceid
 read -p "Enter the interface description(ex. Atlanta): " intdescription 
 read -p "Enter your router's IP or URL: " rtip
