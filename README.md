@@ -9,13 +9,13 @@ Prequisites
 -xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages
 -PIA username and password
 -Pfsnse username and password with proper permissions for the API(See API install link for more information.)
+-SSH access on Pfsense(not required but reccomended.  You could also run the commands from the gui.)
 
 Tested on PFSense 2.6 IF SOMETHING GOES WRONG I AM NOT LIABLE
 
 If you setup ssl with valid certificate from Let's Encrypt you can send all requests to the API over SSL. 
 
 This video can show you how.   https://www.youtube.com/watch?v=gVOEdt-BHDY
-
 
 If you have port forward rules set on that gateway you will have to set the gateway again in the rule after the changes.  I have included a sample API request for modifying a single NAT port forward rule at the end of the script.  Uncomment and change accordingly to adjust the rule.
 
@@ -57,15 +57,20 @@ If you have port forward rules set on that gateway you will have to set the gate
 
 				Save and apply
 
-5.	Edit the config.ini file to fit you system, there are eplanations of each variable in the config file.
+5.  Go login to the router via ssh 'ssh root@router.ip'
 
-		-to get a list of regions you can run 'python3.8 regions.py' you put the name provided in for the region variable i.e. Atlanta US
+6. Git clone the repo 'git clone https://github.com/bigsurly/Pfsense_PIA_Wireguard'
 
-6.	Once you have the config file ready to go you can run the program
-						-'chmod +x pia_automate.sh'
-						-'./pia_automate.sh'
+7.	cd into the directory 'cd Pfsense_PIA_Wireguard'
 
-7.  If everything works you should have a working PIA VPN gateway using Wireguard in your chosen region.  If you get errors double check your config file and make sure all values are filled out.
+8. run the setup 
+		'chmod setup.sh'
+		'./setup.sh'
+
+9. Onc setup is complete you can run the script.
+		'./pia_automate.sh'
+
+7.  If everything works you should have a working PIA VPN gateway using Wireguard in your chosen region.  If you get errors delete the config.ini file and run setup again, making sure to double check all values.
 
 
 
