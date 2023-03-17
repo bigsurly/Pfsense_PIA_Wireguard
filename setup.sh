@@ -23,7 +23,7 @@ read python_command
 python_command=${python_command:-$default_python}
 
 # Write variables to config.ini file
-echo "[DEFAULT]" > config.ini
+echo "[Default]" > config.ini
 echo "userpass=$pfsense_username" >> config.ini
 echo "wginf=$wireinf" >> config.ini
 echo "wgpeer=$wirepeer" >> config.ini
