@@ -3,7 +3,6 @@
 # Import variables from the configuration file
 . ./config.ini
 
-
 #Make sure there are not config files already present
 rm wg1.conf
 find . -name "PIA*.conf" -exec rm '{}' \;
@@ -33,9 +32,6 @@ pubkey=$(echo $privkey | wg pubkey)
 echo "New Interface Address: $newinfaddr"
 echo "New Public Key: $pubkey"
 echo "New Endpoint: $fixedendpoint"
-
-
-
 
 #remove PIA conf file becuase we are done with it
 rm wg1.conf
