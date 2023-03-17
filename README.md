@@ -59,7 +59,13 @@ If you have port forward rules set on that gateway you will have to set the gate
 
 5.	Edit the config.ini file to fit you system, there are eplanations of each variable in the config file.
 
-to get a list of regions you can run 'python3.8 regions.py' you put the name provided in for the region variable i.e. Atlanta US
+		-to get a list of regions you can run 'python3.8 regions.py' you put the name provided in for the region variable i.e. Atlanta US
+
+6.	Once you have the config file ready to go you can run the program
+						-'chmod +x pia_automate.sh'
+						-'./pia_automate.sh'
+
+7.  If everything works you should have a working PIA VPN gateway using Wireguard in your chosen region.  If you get errors double check your config file and make sure all values are filled out.
 
 
 
