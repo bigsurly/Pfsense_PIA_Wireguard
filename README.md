@@ -2,8 +2,8 @@
 This scripts automates the recreation of a Wireguard VPN on a pfsense router. I plan to link this with a cron script that pings out the PIA gateway and fires this script when the ping fails.
 
 -	Prequisites:
-		-Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line
-		-Curl ‘pkg install curl’ from pfsense command line
+		-Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line </p>
+		-Curl ‘pkg install curl’ from pfsense command line </p>
 		-Enable FreeBSD on pfsense https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html
 		-Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api
 		-xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages
