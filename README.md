@@ -8,7 +8,7 @@ This scripts automates the recreation of a Wireguard VPN on a pfsense router. I 
 		-Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api </p>
 		-xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages </p>
 		-PIA username and password </p>
-		-Pfsnse username and password with proper permissions for the API(See API install link for more information.)</p> 
+		-Pfsense username and password with proper permissions for the API(See API install link for more information.)</p> 
 		-SSH access on Pfsense(not required but reccomended.  You could also run the commands from the gui.)</p>
 
 Tested on PFSense 2.6 IF SOMETHING GOES WRONG I AM NOT LIABLE
