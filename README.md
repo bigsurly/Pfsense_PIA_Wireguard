@@ -4,22 +4,22 @@ This scripts automates the recreation of a Wireguard VPN on a pfsense router. I 
 -	Prequisites:
 		-Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line </p>
 		-Curl ‘pkg install curl’ from pfsense command line </p>
-		-Enable FreeBSD on pfsense https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html
-		-Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api
-		-xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages
-		-PIA username and password
-		-Pfsnse username and password with proper permissions for the API(See API install link for more information.)
-		-SSH access on Pfsense(not required but reccomended.  You could also run the commands from the gui.)
+		-Enable FreeBSD on pfsense https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html </p>
+		-Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api </p>
+		-xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages </p>
+		-PIA username and password </p>
+		-Pfsnse username and password with proper permissions for the API(See API install link for more information.)</p> 
+		-SSH access on Pfsense(not required but reccomended.  You could also run the commands from the gui.)</p>
 
 Tested on PFSense 2.6 IF SOMETHING GOES WRONG I AM NOT LIABLE
 </p>
 If you setup ssl with valid certificate from Let's Encrypt you can send all requests to the API over SSL. 
 </p>
 This video can show you how.   https://www.youtube.com/watch?v=gVOEdt-BHDY
-
+</p>
 If you have port forward rules set on that gateway you will have to set the gateway again in the rule after the changes.  I have included a sample API request for modifying a single NAT port forward rule at the end of the script.  Uncomment and change accordingly to adjust the rule.
-
-
+</p>
+</p>
 1.	First you need to create a dummy tunnel and peer in the wireguard gui in pfsense.  
 
 		Setup the tunnel:
