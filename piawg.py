@@ -1,19 +1,19 @@
-import configparser
+#import configparser
 
-config = configparser.ConfigParser()
-config.read('config.ini')
+#config = configparser.ConfigParser()
+#config.read('config.ini')
 
-userpass = config.get('Default', 'userpass')
-wginf = config.get('Default', 'wginf')
-wgpeer = config.get('Default', 'wgpeer')
-infid = config.get('Default', 'infid')
-infdescr = config.get('Default', 'infdescr')
-rtip = config.get('Default', 'rtip')
-gateid = config.get('Default', 'gateid')
-py = config.get('Default', 'py')
-piausername = config.get('Default', 'piausername')
-piapassword = config.get('Default', 'piapassword')
-piaregion = config.get('Default', 'piaregion')
+#userpass = config.get('Default', 'userpass')
+#wginf = config.get('Default', 'wginf')
+#wgpeer = config.get('Default', 'wgpeer')
+#infid = config.get('Default', 'infid')
+#infdescr = config.get('Default', 'infdescr')
+#rtip = config.get('Default', 'rtip')
+#gateid = config.get('Default', 'gateid')
+#py = config.get('Default', 'py')
+#piausername = config.get('Default', 'piausername')
+#piapassword = config.get('Default', 'piapassword')
+#piaregion = config.get('Default', 'piaregion')
 
             
 import requests
