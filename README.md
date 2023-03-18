@@ -1,5 +1,5 @@
 # Pfsense_PIA_Wireguard
-This scripts automates the recreation of a Wireguard VPN on a pfsense router. I plan to link this with a cron script that pings out the PIA gateway and fires this script when the ping fails.
+This scripts automates the recreation of a Wireguard VPN on a pfsense router.
 
 -	Prequisites:
 		-Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line </p>
@@ -71,6 +71,8 @@ If you have port forward rules set on that gateway you will have to set the gate
 		'./pia_automate.sh'
 
 7.  If everything works you should have a working PIA VPN gateway using Wireguard in your chosen region.  If you get errors delete the config.ini file and run setup again, making sure to double check all values.
+
+8.	If you would like to monitor the gateway and have the pia_automate.sh script rebuild the Wireguard connection if it goes down you can setup check_interfaces.py script to run via cron.  Cron can be downloaded via the standard package manager in the pfsense webgui.  You can setup it to check however often you want.
 
 
 
