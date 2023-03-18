@@ -1,5 +1,5 @@
 <h1>Pfsense_PIA_Wireguard</h1>
-<p>This script automates the recreation of a Wireguard PIA(Private Internet Access) VPN on a pfsense router .    A great deal of this script was created and or edited and debugged with the assistance of ChatGPT.</p>
+<p>This script automates the recreation of a Wireguard PIA(Private Internet Access) VPN on a pfsense router. It first checks whether the necessary configuration file exists and proceeds to remove any existing configuration files. It then generates a new configuration file using a Python script, renames it, and parses some data from it. The script also modifies the pfsense configuration file to update the private and public keys and the endpoint information for the WireGuard interface. It then removes the old interface and adds the new modified interface. Finally, it applies the changes and restarts the WireGuard service. The script also includes a commented-out section for updating a NAT port forward rule. A great deal of this script was created, edited and debugged with the assistance of ChatGPT.</p>
 <h2>Prerequisites</h2>
 <ul>
 	<li>Python 3.8 (If not installed, run <code>pkg install python3.8</code> from the command line.)</li>
