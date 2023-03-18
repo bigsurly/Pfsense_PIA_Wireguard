@@ -1,14 +1,17 @@
 #!/bin/sh
 
+# Determine the absolute path of the script
+SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
+
 #Check if config file exists
-if [ -f config.ini ]; then
+if [ -f "$SCRIPT_PATH/config.ini" ]; then
     echo "config.ini exists"
 else
     echo "config.ini does not exist please run setup.sh first."
 fi
 
 # Import variables from the configuration file
-. ./config.ini
+. "$SCRIPT_PATH/config.ini"
 
 #Make sure there are not config files already present
 rm wg1.conf
