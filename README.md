@@ -18,7 +18,8 @@ If you set up SSL with a valid certificate from Let's Encrypt, you can send all 
 If you have port forward rules set on that gateway, you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.
 
 1.	Create a dummy tunnel and peer in the Wireguard GUI in Pfsense.
-		Setup the tunnel:
+		Setup the tunnel
+			
 			Description: "Name of the Region you are connecting to"
 			Listen Port: "any port you choose ex. 1024-65555"
 			Private Key: fKMCeFhZ4zOncJ7GN+yFBAYtUvC2v0lghhNTGJwOutM= (This is just a placeholder)
@@ -27,7 +28,8 @@ If you have port forward rules set on that gateway, you will have to set the gat
 	Save that and create a peer.
 
 2.	Assign the peer to the newly created tunnel. To find the name, go back to the main tunnels screen and you will see something like tun_wg0 or tun_wg1, which is the name of your Wireguard interface.
-		Setup the Peer:
+		Setup the Peer
+			
 			Tunnel: "Select the tunnel you just set up"
 			Description: "This is the name of the endpoint and also the $wgpeer variable"
 			Endpoint: "Any IP address is fine, this is just a placeholder ex. 1.1.1.1"
