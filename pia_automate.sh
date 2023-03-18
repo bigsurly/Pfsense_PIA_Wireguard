@@ -14,24 +14,24 @@ fi
 . "$SCRIPT_PATH/config.ini"
 
 #Make sure there are not config files already present
-rm wg1.conf
-find . -name "PIA*.conf" -exec rm '{}' \;
+rm "$SCRIPT_PATH/wg1.conf"
+rm "$SCRIPT_PATH/PIA*.conf"
 
 #Generate config file
-$py generate-config.py
+$py "$SCRIPT_PATH/generate-config.py"
 #sleep 5
 echo "OK Proceeding!"
 
 #Rename generated PIA config file
-find . -name "PIA*.conf" -exec cp '{}' wg1.conf \;
+find $SCRIPT_PATH -name "PIA*.conf" -execdir cp {} $SCRIPT_PATH/wg1.conf \;
 #Delete original conf file
-find . -name "PIA*.conf" -exec rm '{}' \;
+rm "$SCRIPT_PATH/PIA*.conf"
 
 #Parse data from the new conf file wg1.conf
-newinfaddr=$(awk '/^Address/{print $3}' wg1.conf)
-privkey=$(awk '/^PrivateKey/{print $3}' wg1.conf)
-remotepubkey=$(awk '/^PublicKey/{print $3}' wg1.conf)
-endpoint=$(awk '/^Endpoint/{print $3}' wg1.conf)
+newinfaddr=$(awk '/^Address/{print $3}' $SCRIPT_PATH/wg1.conf)
+privkey=$(awk '/^PrivateKey/{print $3}' $SCRIPT_PATH/wg1.conf)
+remotepubkey=$(awk '/^PublicKey/{print $3}' $SCRIPT_PATH/wg1.conf)
+endpoint=$(awk '/^Endpoint/{print $3}' $SCRIPT_PATH/wg1.conf)
 fixedendpoint=$(echo $endpoint | sed 's/:1337//g')
 
 #Generate new public key from private key
@@ -43,7 +43,7 @@ echo "New Public Key: $pubkey"
 echo "New Endpoint: $fixedendpoint"
 
 #remove PIA conf file becuase we are done with it
-rm wg1.conf
+rm "$SCRIPT_PATH/wg1.conf"
 
 #add new keys to pfsense config.xml
 xml ed --inplace -u "/pfsense/installedpackages/wireguard/tunnels/item[name='$wginf']/privatekey" --value "$privkey" /conf/config.xml
