@@ -17,7 +17,7 @@
 <h2>Setup Instructions</h2>
 <p>If you set up SSL with a valid certificate from Let's Encrypt, you can send all requests to the API over SSL. Refer to this <a href="https://www.youtube.com/watch?v=gVOEdt-BHDY">video</a> for more information.</p>
 
-<p>If you have port forward rules set on that gateway, you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.</p>
+<p>If you have port forward rules set on the PIA gateway, you will have to set the gateway again in the rule after the changes, it reverts to the WAN interface for some reason. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. If you only have one rule that is all you should need.  If you have more just duplicate it and increase the id number by one for each multiple.</p>
 
 1.	Create a dummy tunnel and peer in the Wireguard GUI in Pfsense.
 		Setup the tunnel
