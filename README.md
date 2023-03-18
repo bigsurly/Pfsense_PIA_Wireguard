@@ -1,84 +1,54 @@
-# Pfsense_PIA_Wireguard
-This scripts automates the recreation of a Wireguard VPN on a pfsense router.
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pfsense_PIA_Wireguard</title>
+</head>
+<body>
+	<h1>Pfsense_PIA_Wireguard</h1>
+	<p>This script automates the recreation of a Wireguard VPN on a pfsense router.</p>
+	<h3>Prerequisites:</h3>
+	<ul>
+		<li>Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line</li>
+		<li>Curl ‘pkg install curl’ from pfsense command line</li>
+		<li>Enable FreeBSD on pfsense https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html</li>
+		<li>Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api</li>
+		<li>xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages</li>
+		<li>PIA username and password</li>
+		<li>Pfsense username and password with proper permissions for the API(See API install link for more information.)</li>
+		<li>SSH access on Pfsense(not required but recommended. You could also run the commands from the GUI.)</li>
+	</ul>
+	<p>Tested on PFSense 2.6 IF SOMETHING GOES WRONG I AM NOT LIABLE</p>
+	<p>If you setup SSL with valid certificate from Let's Encrypt you can send all requests to the API over SSL.</p>
+	<p>This video can show you how. <a href="https://www.youtube.com/watch?v=gVOEdt-BHDY">https://www.youtube.com/watch?v=gVOEdt-BHDY</a></p>
+	<p>If you have port forward rules set on that gateway you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.</p>
+	<p>1. First you need to create a dummy tunnel and peer in the Wireguard GUI in Pfsense.</p>
+	<ol>
+		<li>Setup the tunnel:</li>
+		<ul>
+			<li>Description: “Name of the Region you are connecting to”</li>
+			<li>Listen Port: “any port you choose ex. 1024-65555”</li>
+			<li>Private Key: fKMCeFhZ4zOncJ7GN+yFBAYtUvC2v0lghhNTGJwOutM=(This is just a placeholder)</li>
+			<li>Public Key: +CGmAgeQRxGLecpGJpHnXyZugHIkZxG9Cr38Y38AK2k=(This is just a placeholder)</li>
+			<li>Interface Address: 10.23.69.35/32</li>
+		</ul>
+		<li>Save that and create a peer.</li>
+	</ol>
+</body>
+</html>
+### Part 3: Running the Scripts
 
--	Prequisites:
-		-Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line </p>
-		-Curl ‘pkg install curl’ from pfsense command line </p>
-		-Enable FreeBSD on pfsense https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html </p>
-		-Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api </p>
-		-xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages </p>
-		-PIA username and password </p>
-		-Pfsense username and password with proper permissions for the API(See API install link for more information.)</p> 
-		-SSH access on Pfsense(not required but reccomended.  You could also run the commands from the gui.)</p>
+1. Connect to your pfSense router via SSH using the command `ssh root@router.ip`
 
-Tested on PFSense 2.6 IF SOMETHING GOES WRONG I AM NOT LIABLE
-</p>
-If you setup ssl with valid certificate from Let's Encrypt you can send all requests to the API over SSL. 
-</p>
-This video can show you how.   https://www.youtube.com/watch?v=gVOEdt-BHDY
-</p>
-If you have port forward rules set on that gateway you will have to set the gateway again in the rule after the changes.  I have included a sample API request for modifying a single NAT port forward rule at the end of the script.  Uncomment and change accordingly to adjust the rule.
-</p>
-</p>
-1.	First you need to create a dummy tunnel and peer in the wireguard gui in pfsense.  
+2. Clone the Git repository by running `git clone https://github.com/bigsurly/Pfsense_PIA_Wireguard`
 
-		Setup the tunnel:
+3. Change into the directory with `cd Pfsense_PIA_Wireguard`
 
-				Description: “Name of the Region you are connecting to”
-				Listen Port: “any port you choose ex. 1024-65555”
-				Private Key:fKMCeFhZ4zOncJ7GN+yFBAYtUvC2v0lghhNTGJwOutM=(This is just a placeholder)
-				Public Key: +CGmAgeQRxGLecpGJpHnXyZugHIkZxG9Cr38Y38AK2k=(This is just a placeholder)
-				Interface Address: 10.23.69.35/32
- 
-		Save that and create a peer.
+4. Make the setup script executable by running `chmod +x setup.sh`
 
-2. Assign the peer to the newly created tunnel.  To find the name go back to the main tunnels screen and you will see something like tun_wg0 or tun_wg1, that is the name of you wireguard interface.
+5. Run the setup script with `./setup.sh` and follow the prompts.
 
-		Setup the Peer:
+6. Once the setup is complete, run the main script with `./pia_automate.sh`.
 
-				Tunnel: "Select the tunnel you jus setup"
-				Description: "This is the name of the endpoint and also the $wgpeer variable"
-				Endpoint: "Any IP address is fine, this is just a placeholder ex. 1.1.1.1"
-				Keep Alive: 25
-				Public Key: "Vam3XRk6jA6+R5PwTY4C5Xzwa/EjR9u1T0ynpawvlEc=" (This is also just a placeholder)
+7. If everything works correctly, you should have a working PIA VPN gateway using WireGuard in your chosen region. If you encounter any errors, delete the `config.ini` file and run the setup again, double-checking all values.
 
-
-3.	Go to interface assignments and assing the new tunnel to an interface and set the IPV4 type to static.
-
-		set the ip to 10.129.246.23/32(or any ip as this is just a placeholder) and save.
-
-4.	Go to System>Routing and add a gateway
-
-				Interface: "The Inteface we just made"
-				Gateway: 10.23.69.1 (This is just a placeholder)
-				Address Family: IPv4
-				Name:"Whatever you want"
-				Monitor IP: 10.0.0.242
-
-				Save and apply
-
-5.  Go login to the router via ssh 'ssh root@router.ip'
-
-6. Git clone the repo 'git clone https://github.com/bigsurly/Pfsense_PIA_Wireguard'
-
-7.	cd into the directory 'cd Pfsense_PIA_Wireguard'
-
-8. run the setup 
-		'chmod setup.sh'
-		'./setup.sh'
-
-9. Onc setup is complete you can run the script.
-		'./pia_automate.sh'
-
-7.  If everything works you should have a working PIA VPN gateway using Wireguard in your chosen region.  If you get errors delete the config.ini file and run setup again, making sure to double check all values.
-
-8.	If you would like to monitor the gateway and have the pia_automate.sh script rebuild the Wireguard connection if it goes down you can setup check_interfaces.py script to run via cron.  Cron can be downloaded via the standard package manager in the pfsense webgui.  You can setup it to check however often you want. 
-
-
-
-
-
-
-
-
-	
+8. If you would like to monitor the gateway and have the `pia_automate.sh` script rebuild the WireGuard connection if it goes down, you can set up the `check_interfaces.py` script to run via cron. Cron can be downloaded via the standard package manager in the pfSense web GUI. You can set it up to check as often as you want.
