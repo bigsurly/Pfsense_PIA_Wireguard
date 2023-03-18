@@ -12,7 +12,6 @@ read -p "Enter the interface id of the interface you created(ex. opt1,opt,opt3):
 read -p "Enter the interface description(ex. Atlanta): " intdescription 
 read -p "Enter your router's IP or URL: " rtip
 read -p "Enter your gateway ID (0 for WAN1, 1 for WAN2, etc.): " gateid
-#read -e -i "python3.8" -p "Enter your Python command or hit enter for default Python3.8: " py
 read -p "Enter your PIA username: " piausername
 read -p "Enter your PIA password: " piapassword
 # Set default value
@@ -36,6 +35,7 @@ echo "piausername=$piausername" >> config.ini
 echo "piapassword=$piapassword" >> config.ini
 echo "piaregion=$piaregion" >> config.ini
 
+#Make pia_autmate executable
 chmod +x pia_automate.sh
 
 echo "Config file setup completed!"
