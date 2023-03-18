@@ -1,3 +1,5 @@
+<h1>Pfsense_PIA_Wireguard</h1>
+<p>This script automates the recreation of a Wireguard VPN on a pfsense router.</p>
 <h2>Prerequisites</h2>
 <ul>
 	<li>Python 3.8 (If not installed, run pkg install python3.8 from the command line.)</li>
