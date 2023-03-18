@@ -3,7 +3,7 @@ import os
 
 # Check if the configuration file exists
 if not os.path.isfile('./config.ini'):
-    print("Configuration file not found.")
+    print("Configuration file not found please run setup.sh first.")
     exit(1)
 
 # Import variables from the configuration file
