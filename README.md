@@ -27,7 +27,7 @@
 			Private Key: fKMCeFhZ4zOncJ7GN+yFBAYtUvC2v0lghhNTGJwOutM= (This is just a placeholder)
 			Public Key: +CGmAgeQRxGLecpGJpHnXyZugHIkZxG9Cr38Y38AK2k= (This is just a placeholder)
 			Interface Address: 10.23.69.35/32
-	Save that and create a peer.
+	Save that tunnel and create a peer.
 
 2.	Assign the peer to the newly created tunnel. To find the name, go back to the main tunnels screen and you will see something like tun_wg0 or tun_wg1, which is the name of your Wireguard interface.<p>
 		Setup the Peer
@@ -37,7 +37,7 @@
 			Endpoint: "Any IP address is fine, this is just a placeholder ex. 1.1.1.1"
 			Keep Alive: 25
 			Public Key: "Vam3XRk6jA6+R5PwTY4C5Xzwa/EjR9u1T0ynpawvlEc=" (just a placeholder)
-
+	Save the peer
 3.	Go to interface assignments and assign the new tunnel to an interface and set the IPV4 type to static.
 		Set the IP to 10.129.246.23/32 (or any IP this is just a placeholder) and save.
 
