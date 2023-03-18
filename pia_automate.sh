@@ -1,5 +1,12 @@
 #!/bin/sh
 
+#Check if config file exists
+if [ -f config.ini ]; then
+    echo "config.ini exists"
+else
+    echo "config.ini does not exist"
+fi
+
 # Import variables from the configuration file
 . ./config.ini
 
@@ -9,7 +16,6 @@ find . -name "PIA*.conf" -exec rm '{}' \;
 
 #Generate config file
 $py generate-config.py
-#echo "Chill out!"
 sleep 5
 echo "OK Proceeding!"
 
@@ -72,7 +78,7 @@ curl -u $userpass -H "Content-Type: application/json" -d '{"service": "wireguard
 sleep 5
 echo "OK Proceeding!"
 
-#Update NAT port forward rule for Plex over PIA VPN - it breaks after all the changes and revers to WAN gateway
+#Update NAT port forward rule for Plex over PIA VPN - it breaks after all the changes and revers to WAN gateway.  IF you only have one port forwas rule this should work.
 #curl -u $userpass -H "Content-Type: application/json" -d '{"id":"0", "interface": "'$infid'"}' -X PUT $rtip/api/v1/firewall/nat/port_forward
 ##Apply the changes
 #curl -u $userpass -H "Content-Type: application/json"  -X POST $rtip/api/v1/firewall/apply
