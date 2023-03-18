@@ -72,7 +72,7 @@ If you have port forward rules set on that gateway you will have to set the gate
 
 7.  If everything works you should have a working PIA VPN gateway using Wireguard in your chosen region.  If you get errors delete the config.ini file and run setup again, making sure to double check all values.
 
-8.	If you would like to monitor the gateway and have the pia_automate.sh script rebuild the Wireguard connection if it goes down you can setup check_interfaces.py script to run via cron.  Cron can be downloaded via the standard package manager in the pfsense webgui.  You can setup it to check however often you want.
+8.	If you would like to monitor the gateway and have the pia_automate.sh script rebuild the Wireguard connection if it goes down you can setup check_interfaces.py script to run via cron.  Cron can be downloaded via the standard package manager in the pfsense webgui.  You can setup it to check however often you want. 
 
 
 
