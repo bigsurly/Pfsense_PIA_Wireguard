@@ -65,4 +65,4 @@
 
 7. If everything works correctly, you should have a working PIA VPN gateway using WireGuard in your chosen region. If you encounter any errors, delete the `config.ini` file and run the setup again, double-checking all values.
 
-8. If you would like to monitor the gateway and have the `pia_automate.sh` script rebuild the WireGuard connection if it goes down, you can set up the `check_interfaces.py` script to run via cron. Cron can be downloaded via the standard package manager in the pfSense web GUI. You can set it up to check as often as you want.
+8. If you would like to monitor the gateway and have the `pia_automate.sh` script rebuild the WireGuard connection if it goes down, you can set up the `check_interface.py` script to run via cron. Cron can be downloaded via the standard package manager in the pfSense web GUI. You can set it up to check as often as you want.
