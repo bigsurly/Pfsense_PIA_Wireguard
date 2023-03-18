@@ -5,7 +5,7 @@ SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
 
 # Prompt user for input and store in variables
 echo "Please select a region from the list below: "
-${SCRIPT_PATH}/python3.8 ${SCRIPT_PATH}/regions.py
+python3.8 ${SCRIPT_PATH}/regions.py
 read -p "Enter your selected region: " piaregion
 
 read -p "Enter Pfsense username and password(ex. admin:password): " pfsense_username
