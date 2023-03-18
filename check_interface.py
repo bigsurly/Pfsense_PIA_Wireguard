@@ -36,14 +36,16 @@ def check_status():
             if status == 'down':
                 subprocess.call(['./pia_automate.sh'])
             print(f"Status: {status}")
+            return status
         except Exception as e:
             print(f"Error parsing response: {e}")
     else:
         print(f"Request failed with status code {response.status_code}")
 
 while True:
-    check_status()
-    time.sleep(60)
-    if status == 'online':
-        print("Gateway status is online. Exiting the loop.")
+    response = check_status()
+    if response == "online":
         break
+    time.sleep(60)  # Wait for 60 seconds before making the next API call
+
+print("Gateway is now online")
