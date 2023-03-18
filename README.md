@@ -1,21 +1,21 @@
-Pfsense_PIA_Wireguard
-This script automates the recreation of a Wireguard VPN on a pfsense router.
+<h2>Prerequisites</h2>
+<ul>
+	<li>Python 3.8 (If not installed, run pkg install python3.8 from the command line.)</li>
+	<li>Curl (Run pkg install curl from the pfsense command line.)</li>
+	<li>Enable FreeBSD on Pfsense (Refer to the <a href="https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html">official documentation</a>.)</li>
+	<li>Rest API for Pfsense (Install from <a href="https://github.com/jaredhendrickson13/pfsense-api">https://github.com/jaredhendrickson13/pfsense-api</a>.)</li>
+	<li>Xmlstarlet (Run pkg install xmlstarlet after enabling the full set of FreeBSD packages.)</li>
+	<li>PIA username and password</li>
+	<li>Pfsense username and password with proper permissions for the API (See API install link for more information.)</li>
+	<li>SSH access on Pfsense (Not required but recommended. You could also run the commands from the GUI.)</li>
+</ul>
 
-Prerequisites
-Python 3.8 (If not installed, run pkg install python3.8 from the command line.)
-Curl (Run pkg install curl from the pfsense command line.)
-Enable FreeBSD on Pfsense (Refer to the official documentation.)
-Rest API for Pfsense (Install from https://github.com/jaredhendrickson13/pfsense-api.)
-Xmlstarlet (Run pkg install xmlstarlet after enabling the full set of FreeBSD packages.)
-PIA username and password
-Pfsense username and password with proper permissions for the API (See API install link for more information.)
-SSH access on Pfsense (Not required but recommended. You could also run the commands from the GUI.)
-Note: This script has been tested on PFSense 2.6. If something goes wrong, the author is not liable.
+<p>Note: This script has been tested on PFSense 2.6. If something goes wrong, the author is not liable.</p>
 
-Setup Instructions
-If you set up SSL with a valid certificate from Let's Encrypt, you can send all requests to the API over SSL. Refer to this video for more information.
+<h2>Setup Instructions</h2>
+<p>If you set up SSL with a valid certificate from Let's Encrypt, you can send all requests to the API over SSL. Refer to this <a href="https://www.youtube.com/watch?v=gVOEdt-BHDY">video</a> for more information.</p>
 
-If you have port forward rules set on that gateway, you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.
+<p>If you have port forward rules set on that gateway, you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.</p>
 
 1.	Create a dummy tunnel and peer in the Wireguard GUI in Pfsense.
 		Setup the tunnel
