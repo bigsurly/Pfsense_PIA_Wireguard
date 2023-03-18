@@ -1,4 +1,16 @@
 import configparser
+import os
+
+# Check if the configuration file exists
+if not os.path.isfile('./config.ini'):
+    print("Configuration file not found.")
+    exit(1)
+
+# Import variables from the configuration file
+with open('./config.ini', 'r') as f:
+    for line in f:
+        # Process each line in the config file
+        ...
 
 config = configparser.ConfigParser()
 config.read('config.ini')
