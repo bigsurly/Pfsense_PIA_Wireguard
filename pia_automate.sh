@@ -15,7 +15,7 @@ fi
 
 #Make sure there are not config files already present
 rm "$SCRIPT_PATH/wg1.conf"
-rm "$SCRIPT_PATH/PIA*.conf"
+rm "$SCRIPT_PATH/PIA*"
 
 #Generate config file
 $py "$SCRIPT_PATH/generate-config.py"
