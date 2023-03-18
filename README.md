@@ -36,7 +36,7 @@
 			Description: "This is the name of the endpoint and also the $wgpeer variable"
 			Endpoint: "Any IP address is fine, this is just a placeholder ex. 1.1.1.1"
 			Keep Alive: 25
-			Public Key: "Vam3XRk6jA6+R5PwTY4C5Xzwa/EjR9u1T0ynpawvlEc=" (This is also just a placeholder)
+			Public Key: "Vam3XRk6jA6+R5PwTY4C5Xzwa/EjR9u1T0ynpawvlEc=" (just a placeholder)
 
 3.	Go to interface assignments and assign the new tunnel to an interface and set the IPV4 type to static.
 		Set the IP to 10.129.246.23/32 (or any IP this is just a placeholder) and save.
@@ -44,7 +44,7 @@
 4.	Go to System>Routing and add a gateway
 
 			Interface: "The Inteface we just made"
-			Gateway: 10.23.69.1 (This is just a placeholder)
+			Gateway: 10.23.69.1 (just a placeholder)
 			Address Family:IPv4
 			Name:"Whatever you want"
 			Monitor IP: 10.0.0.242
