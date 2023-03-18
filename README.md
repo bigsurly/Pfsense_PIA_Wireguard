@@ -48,8 +48,7 @@
 			Address Family:IPv4
 			Name:"Whatever you want"
 			Monitor IP: 10.0.0.242
-
-			Save and apply
+	Save and apply
 
 
 1. Connect to your pfSense router via SSH using the command `ssh root@router.ip`
