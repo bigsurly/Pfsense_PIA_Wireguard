@@ -29,7 +29,7 @@
 			Interface Address: 10.23.69.35/32
 	Save that and create a peer.
 
-2.	Assign the peer to the newly created tunnel. To find the name, go back to the main tunnels screen and you will see something like tun_wg0 or tun_wg1, which is the name of your Wireguard interface.
+2.	Assign the peer to the newly created tunnel. To find the name, go back to the main tunnels screen and you will see something like tun_wg0 or tun_wg1, which is the name of your Wireguard interface.<p>
 		Setup the Peer
 			
 			Tunnel: "Select the tunnel you just set up"
