@@ -4,7 +4,7 @@
 if [ -f config.ini ]; then
     echo "config.ini exists"
 else
-    echo "config.ini does not exist"
+    echo "config.ini does not exist please run setup.sh first."
 fi
 
 # Import variables from the configuration file
@@ -16,7 +16,7 @@ find . -name "PIA*.conf" -exec rm '{}' \;
 
 #Generate config file
 $py generate-config.py
-sleep 5
+#sleep 5
 echo "OK Proceeding!"
 
 #Rename generated PIA config file
@@ -57,13 +57,13 @@ curl -u $userpass -H "Content-Type: application/json" -d '{"id": "'$gateid'", "g
 #Remove the old interface
 curl -u $userpass -H "Content-Type: application/json" -d '{"if":"'$wginf'"}' -X DELETE $rtip/api/v1/interface
 #echo "Chill out!"
-sleep 5
+#sleep 5
 echo "OK Proceeding!"
 
 #Add the new modified interface
 curl -u $userpass -H "Content-Type: application/json" -d '{"id":"'$infid'","descr":"'$infdescr'","if":"'$wginf'","ipaddr": "'$newinfaddr'","subnet":32,"enable":true,"type":"staticv4","mss":1380}' -X POST $rtip/api/v1/interface
 #echo "Chill out!"
-sleep 5
+#sleep 5
 echo "OK Proceeding!"
 
 #Apply the changes
@@ -75,7 +75,7 @@ curl -u $userpass -H "Content-Type: application/json" -X POST $rtip/api/v1/routi
 #restart wireguard service
 curl -u $userpass -H "Content-Type: application/json" -d '{"service": "wireguard"}' -X POST $rtip/api/v1/services/restart
 #echo "Chill out!"
-sleep 5
+sleep 3
 echo "OK Proceeding!"
 
 #Update NAT port forward rule for Plex over PIA VPN - it breaks after all the changes and revers to WAN gateway.  IF you only have one port forwas rule this should work.
