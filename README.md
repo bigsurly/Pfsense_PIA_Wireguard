@@ -1,41 +1,52 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Pfsense_PIA_Wireguard</title>
-</head>
-<body>
-	<h1>Pfsense_PIA_Wireguard</h1>
-	<p>This script automates the recreation of a Wireguard VPN on a pfsense router.</p>
-	<h3>Prerequisites:</h3>
-	<ul>
-		<li>Python3.8 'I think it is installed by default but if not you can type pkg install python3.8 and install from command line</li>
-		<li>Curl ‘pkg install curl’ from pfsense command line</li>
-		<li>Enable FreeBSD on pfsense https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html</li>
-		<li>Rest API for pfsense https://github.com/jaredhendrickson13/pfsense-api</li>
-		<li>xmlstarlet ‘pkg install xmlstarlet’ after enabling  the full set of FreeBSD packages</li>
-		<li>PIA username and password</li>
-		<li>Pfsense username and password with proper permissions for the API(See API install link for more information.)</li>
-		<li>SSH access on Pfsense(not required but recommended. You could also run the commands from the GUI.)</li>
-	</ul>
-	<p>Tested on PFSense 2.6 IF SOMETHING GOES WRONG I AM NOT LIABLE</p>
-	<p>If you setup SSL with valid certificate from Let's Encrypt you can send all requests to the API over SSL.</p>
-	<p>This video can show you how. <a href="https://www.youtube.com/watch?v=gVOEdt-BHDY">https://www.youtube.com/watch?v=gVOEdt-BHDY</a></p>
-	<p>If you have port forward rules set on that gateway you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.</p>
-	<p>1. First you need to create a dummy tunnel and peer in the Wireguard GUI in Pfsense.</p>
-	<ol>
-		<li>Setup the tunnel:</li>
-		<ul>
-			<li>Description: “Name of the Region you are connecting to”</li>
-			<li>Listen Port: “any port you choose ex. 1024-65555”</li>
-			<li>Private Key: fKMCeFhZ4zOncJ7GN+yFBAYtUvC2v0lghhNTGJwOutM=(This is just a placeholder)</li>
-			<li>Public Key: +CGmAgeQRxGLecpGJpHnXyZugHIkZxG9Cr38Y38AK2k=(This is just a placeholder)</li>
-			<li>Interface Address: 10.23.69.35/32</li>
-		</ul>
-		<li>Save that and create a peer.</li>
-	</ol>
-</body>
-</html>
-### Part 3: Running the Scripts
+Pfsense_PIA_Wireguard
+This script automates the recreation of a Wireguard VPN on a pfsense router.
+
+Prerequisites
+Python 3.8 (If not installed, run pkg install python3.8 from the command line.)
+Curl (Run pkg install curl from the pfsense command line.)
+Enable FreeBSD on Pfsense (Refer to the official documentation.)
+Rest API for Pfsense (Install from https://github.com/jaredhendrickson13/pfsense-api.)
+Xmlstarlet (Run pkg install xmlstarlet after enabling the full set of FreeBSD packages.)
+PIA username and password
+Pfsense username and password with proper permissions for the API (See API install link for more information.)
+SSH access on Pfsense (Not required but recommended. You could also run the commands from the GUI.)
+Note: This script has been tested on PFSense 2.6. If something goes wrong, the author is not liable.
+
+Setup Instructions
+If you set up SSL with a valid certificate from Let's Encrypt, you can send all requests to the API over SSL. Refer to this video for more information.
+
+If you have port forward rules set on that gateway, you will have to set the gateway again in the rule after the changes. I have included a sample API request for modifying a single NAT port forward rule at the end of the script. Uncomment and change accordingly to adjust the rule.
+
+1.	Create a dummy tunnel and peer in the Wireguard GUI in Pfsense.
+		Setup the tunnel:
+			Description: "Name of the Region you are connecting to"
+			Listen Port: "any port you choose ex. 1024-65555"
+			Private Key: fKMCeFhZ4zOncJ7GN+yFBAYtUvC2v0lghhNTGJwOutM= (This is just a placeholder)
+			Public Key: +CGmAgeQRxGLecpGJpHnXyZugHIkZxG9Cr38Y38AK2k= (This is just a placeholder)
+			Interface Address: 10.23.69.35/32
+	Save that and create a peer.
+
+2.	Assign the peer to the newly created tunnel. To find the name, go back to the main tunnels screen and you will see something like tun_wg0 or tun_wg1, which is the name of your Wireguard interface.
+		Setup the Peer:
+			Tunnel: "Select the tunnel you just set up"
+			Description: "This is the name of the endpoint and also the $wgpeer variable"
+			Endpoint: "Any IP address is fine, this is just a placeholder ex. 1.1.1.1"
+			Keep Alive: 25
+			Public Key: "Vam3XRk6jA6+R5PwTY4C5Xzwa/EjR9u1T0ynpawvlEc=" (This is also just a placeholder)
+
+3.	Go to interface assignments and assign the new tunnel to an interface and set the IPV4 type to static.
+		Set the IP to 10.129.246.23/32 (or any IP this is just a placeholder) and save.
+
+4.	Go to System>Routing and add a gateway
+
+			Interface: "The Inteface we just made"
+			Gateway: 10.23.69.1 (This is just a placeholder)
+			Address Family:IPv4
+			Name:"Whatever you want"
+			Monitor IP: 10.0.0.242
+
+			Save and apply
+
 
 1. Connect to your pfSense router via SSH using the command `ssh root@router.ip`
 
