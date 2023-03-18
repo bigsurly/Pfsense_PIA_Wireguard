@@ -22,6 +22,10 @@ infdescr = config.get('Default', 'infdescr')
 rtip = config.get('Default', 'rtip')
 pfuser, pfpass = userpass.split(':')
 
+print(f"Username: {pfuser}")
+print("Password: " + "*" * len(pfpass))
+print(f"Router Address: {rtip}")
+
 # Call the API to check if the gateway status is online and if it changes to 'down' call the pia_automate.sh script
 def check_status():
     url = f"{rtip}/api/v1/status/gateway"
@@ -40,7 +44,7 @@ def check_status():
             print(f"Error parsing response: {e}")
     else:
         print(f"Request failed with status code {response.status_code}")
-
+        print(f"{url}")
 while True:
     response = check_status()
     if response == "online":
