@@ -2,7 +2,9 @@
 <p>This script automates the recreation of a Wireguard VPN on a pfsense router.</p>
 <h2>Prerequisites</h2>
 <ul>
-	<li>Python 3.8 (If not installed, run `pkg install python3.8` from the command line.)</li>
+	<li>Python 3.8 (If not installed, run ```python
+	pkg install python3.8
+	``` from the command line.)</li>
 	<li>Curl (Run `pkg install curl` from the pfsense command line.)</li>
 	<li>Enable FreeBSD on Pfsense (Refer to the <a href="https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html">official documentation</a>.)</li>
 	<li>Rest API for Pfsense (Install from <a href="https://github.com/jaredhendrickson13/pfsense-api">https://github.com/jaredhendrickson13/pfsense-api</a>.)</li>
