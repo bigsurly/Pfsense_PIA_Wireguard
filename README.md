@@ -3,10 +3,10 @@
 <h2>Prerequisites</h2>
 <ul>
 	<li>Python 3.8 (If not installed, run <code>pkg install python3.8</code> from the command line.)</li>
-	<li>Curl (Run `pkg install curl` from the pfsense command line.)</li>
+	<li>Curl (Run <code>pkg install curl</code> from the pfsense command line.)</li>
 	<li>Enable FreeBSD on Pfsense (Refer to the <a href="https://docs.netgate.com/pfsense/en/latest/recipes/freebsd-pkg-repo.html">official documentation</a>.)</li>
 	<li>Rest API for Pfsense (Install from <a href="https://github.com/jaredhendrickson13/pfsense-api">https://github.com/jaredhendrickson13/pfsense-api</a>.)</li>
-	<li>Xmlstarlet (Run `pkg install xmlstarlet` after enabling the full set of FreeBSD packages.)</li>
+	<li>Xmlstarlet (Run <code>pkg install xmlstarlet</code> after enabling the full set of FreeBSD packages.)</li>
 	<li>PIA username and password</li>
 	<li>Pfsense username and password with proper permissions for the API (See API install link for more information.)</li>
 	<li>SSH access on Pfsense (Not required but recommended. You could also run the commands from the GUI.)</li>
