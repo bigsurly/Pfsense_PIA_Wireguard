@@ -23,7 +23,7 @@ infdescr = config.get('Default', 'infdescr')
 rtip = config.get('Default', 'rtip')
 pfuser, pfpass = userpass.split(':')
 
-#Call the API to check if the gatewasy status is online and if it changes to down call the pia_automate.sh script
+#Call the API to check if the gateway status is online and if it changes to 'down' call the pia_automate.sh script
 def check_status():
     url = f"{rtip}/api/v1/status/gateway"
     headers = {"Content-Type": "application/json"}
@@ -46,6 +46,6 @@ while True:
     response = check_status()
     if response == "online":
         break
-    time.sleep(60)  # Wait for 60 seconds before making the next API call
+    time.sleep(90)  # Wait for 90 seconds before making the next API call
 
 print("Gateway is now online")

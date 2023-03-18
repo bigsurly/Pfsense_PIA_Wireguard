@@ -37,5 +37,6 @@ echo "piaregion=$piaregion" >> config.ini
 
 #Make pia_autmate executable
 chmod +x pia_automate.sh
+chmod +x check_interface.py
 
 echo "Config file setup completed!"
