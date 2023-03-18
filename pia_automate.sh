@@ -59,13 +59,13 @@ curl -u $userpass -H "Content-Type: application/json" -d '{"id": "'$gateid'", "g
 
 #Remove the old interface
 curl -u $userpass -H "Content-Type: application/json" -d '{"if":"'$wginf'"}' -X DELETE $rtip/api/v1/interface
-#echo "Chill out!"
+
 #sleep 5
 echo "OK Proceeding!"
 
 #Add the new modified interface
 curl -u $userpass -H "Content-Type: application/json" -d '{"id":"'$infid'","descr":"'$infdescr'","if":"'$wginf'","ipaddr": "'$newinfaddr'","subnet":32,"enable":true,"type":"staticv4","mss":1380}' -X POST $rtip/api/v1/interface
-#echo "Chill out!"
+
 #sleep 5
 echo "OK Proceeding!"
 
@@ -77,7 +77,7 @@ curl -u $userpass -H "Content-Type: application/json" -X POST $rtip/api/v1/routi
 
 #restart wireguard service
 curl -u $userpass -H "Content-Type: application/json" -d '{"service": "wireguard"}' -X POST $rtip/api/v1/services/restart
-#echo "Chill out!"
+
 sleep 3
 echo "OK Proceeding!"
 

@@ -1,5 +1,5 @@
 <h1>Pfsense_PIA_Wireguard</h1>
-<p>This script automates the recreation of a Wireguard VPN on a pfsense router.  A great deal of this script was created and or edited and debugged with the assistance of ChatGPT.</p>
+<p>This script automates the recreation of a Wireguard PIA(Private Internet Access) VPN on a pfsense router .    A great deal of this script was created and or edited and debugged with the assistance of ChatGPT.</p>
 <h2>Prerequisites</h2>
 <ul>
 	<li>Python 3.8 (If not installed, run <code>pkg install python3.8</code> from the command line.)</li>
